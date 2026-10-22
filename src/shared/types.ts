@@ -30,3 +30,17 @@ export interface JobStatusResponse<TResult = unknown> {
   result: TResult | null;
   failedReason: string | null;
 }
+
+export interface EmailJobData {
+  to?: string;
+  subject?: string;
+  templateId?: string;
+  shouldFail?: boolean;
+  [key: string]: any;
+}
+
+export interface EmailJobResult {
+  sent: boolean;
+  recipient?: string;
+  sentAt: string;
+}
