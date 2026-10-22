@@ -1,0 +1,26 @@
+{
+  "name": "qentral",
+  "version": "1.0.0",
+  "description": "Centralized background job processing system using Bun, Hono, BullMQ, and Redis",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "start": "bun run src/server.ts",
+    "worker": "bun run src/worker.ts",
+    "test": "bun test"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^7"
+  },
+  "dependencies": {
+    "@bull-board/api": "^9.10.4",
+    "@bull-board/hono": "^9.10.4",
+    "@hono/bun": "^1.0.1",
+    "bullmq": "^6.4.0",
+    "hono": "^4.13.13",
+    "ioredis": "^6.0.0"
+  }
+}
