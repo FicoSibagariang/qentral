@@ -68,7 +68,7 @@ Saat agent mulai mengerjakan proyek, tandai progres berikut:
 - [x] **Milestone 1**: Pengujian Auth & Security lolos (`tests/api/auth.test.ts`)
 - [x] **Milestone 2**: Pengujian Registry Antrean lolos (`tests/queues/registry.test.ts`)
 - [x] **Milestone 3**: Pengujian Ingestion API lolos (`tests/api/jobs-publish.test.ts`)
-- [ ] **Milestone 4**: Pengujian Status API lolos (`tests/api/jobs-status.test.ts`)
+- [x] **Milestone 4**: Pengujian Status API lolos (`tests/api/jobs-status.test.ts`)
 - [ ] **Milestone 5**: Pengujian Worker Processor lolos (`tests/workers/processor.test.ts`)
 - [ ] **Milestone 6**: Pengujian Retensi & Clean-up lolos (`tests/shared/retention.test.ts`)
 - [ ] **Milestone 7**: Semua suite test lulus bersamaan via `bun test`.
