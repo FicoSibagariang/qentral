@@ -10,7 +10,9 @@
     "test": "bun test"
   },
   "devDependencies": {
-    "@types/bun": "latest"
+    "@types/bun": "latest",
+    "@types/ioredis-mock": "^8.2.8",
+    "ioredis-mock": "^8.13.1"
   },
   "peerDependencies": {
     "typescript": "^7"
