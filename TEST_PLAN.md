@@ -66,7 +66,7 @@ Dokumen ini memetakan seluruh skenario pengujian unit dan integrasi yang **wajib
 Saat agent mulai mengerjakan proyek, tandai progres berikut:
 
 - [ ] **Milestone 1**: Pengujian Auth & Security lolos (`tests/api/auth.test.ts`)
-- [ ] **Milestone 2**: Pengujian Registry Antrean lolos (`tests/queues/registry.test.ts`)
+- [x] **Milestone 2**: Pengujian Registry Antrean lolos (`tests/queues/registry.test.ts`)
 - [ ] **Milestone 3**: Pengujian Ingestion API lolos (`tests/api/jobs-publish.test.ts`)
 - [ ] **Milestone 4**: Pengujian Status API lolos (`tests/api/jobs-status.test.ts`)
 - [ ] **Milestone 5**: Pengujian Worker Processor lolos (`tests/workers/processor.test.ts`)
