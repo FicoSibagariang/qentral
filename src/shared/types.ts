@@ -19,3 +19,14 @@ export interface PublishJobResponse {
   queue: string;
   jobId: string;
 }
+
+export type JobProgress = number | object | string | boolean;
+
+export interface JobStatusResponse<TResult = unknown> {
+  id: string;
+  name?: string;
+  state: string;
+  progress: JobProgress;
+  result: TResult | null;
+  failedReason: string | null;
+}

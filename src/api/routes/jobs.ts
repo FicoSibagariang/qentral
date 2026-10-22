@@ -1,9 +1,10 @@
 import { Hono } from "hono";
 import { getQueueByName } from "../../queues/registry";
-import type { PublishJobRequest, PublishJobResponse } from "../../shared/types";
+import type { PublishJobRequest, PublishJobResponse, JobStatusResponse } from "../../shared/types";
 
 const jobsRoute = new Hono();
 
+// POST /api/v1/jobs/:queueName
 jobsRoute.post("/:queueName", async (c) => {
   const queueName = c.req.param("queueName");
   const queue = getQueueByName(queueName);
@@ -68,6 +69,46 @@ jobsRoute.post("/:queueName", async (c) => {
       500
     );
   }
+});
+
+// GET /api/v1/jobs/:queueName/:jobId
+jobsRoute.get("/:queueName/:jobId", async (c) => {
+  const queueName = c.req.param("queueName");
+  const jobId = c.req.param("jobId");
+
+  const queue = getQueueByName(queueName);
+  if (!queue) {
+    return c.json(
+      {
+        error: "Not Found",
+        message: `Antrean '${queueName}' tidak ditemukan atau belum terdaftar.`,
+      },
+      404
+    );
+  }
+
+  const job = await queue.getJob(jobId);
+  if (!job) {
+    return c.json(
+      {
+        error: "Not Found",
+        message: `Job dengan ID '${jobId}' tidak ditemukan pada antrean '${queueName}'.`,
+      },
+      404
+    );
+  }
+
+  const state = await job.getState();
+  const response: JobStatusResponse = {
+    id: String(job.id),
+    name: job.name,
+    state,
+    progress: job.progress ?? 0,
+    result: job.returnvalue ?? null,
+    failedReason: job.failedReason ?? null,
+  };
+
+  return c.json(response, 200);
 });
 
 export default jobsRoute;
